@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.util.Hashtable;
 
 public class Game implements KeyListener {
-    private Hashtable<String, Integer> keyBinds;
+    private final Hashtable<String, Integer> keyBinds = new Hashtable<String, Integer>();
     private static FileReader reader;
 
     static {
@@ -27,7 +27,12 @@ public class Game implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        Integer key = e.getKeyCode();
+        for(String i : keyBinds.keySet()) {
+            if(keyBinds.get(i).equals(key)) {
 
+            }
+        }
     }
 
     @Override
