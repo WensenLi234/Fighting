@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
@@ -5,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Hashtable;
 
-public class Game implements KeyListener {
+public class Game extends JFrame implements KeyListener {
     private final Hashtable<String, Integer> keyBinds = new Hashtable<String, Integer>();
     private static FileReader reader;
 
@@ -30,7 +31,7 @@ public class Game implements KeyListener {
         Integer key = e.getKeyCode();
         for(String i : keyBinds.keySet()) {
             if(keyBinds.get(i).equals(key)) {
-
+                // lol
             }
         }
     }
