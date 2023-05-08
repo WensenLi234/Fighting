@@ -9,6 +9,8 @@ import java.util.Hashtable;
 public class Game extends JFrame implements KeyListener {
     private final Hashtable<String, Integer> keyBinds = new Hashtable<String, Integer>();
     private static FileReader reader;
+    private JFrame frame;
+
 
     static {
         try {
