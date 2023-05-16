@@ -38,13 +38,12 @@ public class Game extends JFrame implements KeyListener {
         frame.addKeyListener(this);
         frame.setVisible(true);
         background = ImageIO.read(new File("src/amongUsCharacters.png"));
-        ImageComponent back = new ImageComponent(background);
-        frame.add(back);
+        paintImage(background, 200, 0);
         repaint();
     }
-    public void paintImage(Graphics g, BufferedImage image, int x, int y) {
-        Graphics2D g2D = (Graphics2D) g;
-        g2D.drawImage(image, x, y, null);
+    private void paintImage(BufferedImage image, int x, int y) {
+        ImageComponent component = new ImageComponent(image, x, y);
+        frame.add(component);
     }
     @Override
     public void keyTyped(KeyEvent e) {
