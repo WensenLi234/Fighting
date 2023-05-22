@@ -12,9 +12,7 @@ public class Game extends JFrame implements KeyListener {
     private final Hashtable<String, Integer> keyBinds = new Hashtable<String, Integer>();
     private static BufferedReader reader;
     private JFrame frame;
-    private BufferedImage background;
-
-
+    private ImageComponent background;
 
     static {
         try {
@@ -33,16 +31,20 @@ public class Game extends JFrame implements KeyListener {
     }
     private void initializeGUI() throws IOException {
         frame = new JFrame();
-        frame.setSize(500, 500);
+        frame.setSize(1000, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.addKeyListener(this);
+        frame.setResizable(false);
         frame.setVisible(true);
-        background = ImageIO.read(new File("src/amongUsCharacters.png"));
-        paintImage(background, 200, 0);
-        repaint();
+        background = new ImageComponent("backgrounds/amongUsCharacters.png", 0, 0);
+        frame.add(background);
+        frame.setVisible(true);
+        frame.add(new Hitbox(0, 0, 300, 300));
+        paintComponents(frame.getGraphics());
     }
     private void paintImage(BufferedImage image, int x, int y) {
         ImageComponent component = new ImageComponent(image, x, y);
+
         frame.add(component);
     }
     @Override
