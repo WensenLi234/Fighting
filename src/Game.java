@@ -35,18 +35,18 @@ public class Game extends JFrame implements KeyListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.addKeyListener(this);
         frame.setResizable(false);
-        frame.setVisible(true);
         background = new ImageComponent("backgrounds/amongUsCharacters.png", 0, 0);
         frame.add(background);
-        frame.setVisible(true);
         frame.add(new Hitbox(0, 0, 300, 300));
-        paintComponents(frame.getGraphics());
+        frame.setVisible(true);
+        frame.paintComponents(frame.getGraphics());
     }
-    private void paintImage(BufferedImage image, int x, int y) {
-        ImageComponent component = new ImageComponent(image, x, y);
 
+    private void addImage(BufferedImage image, int x, int y) {
+        ImageComponent component = new ImageComponent(image, x, y);
         frame.add(component);
     }
+
     @Override
     public void keyTyped(KeyEvent e) {
 
