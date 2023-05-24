@@ -12,7 +12,8 @@ public class Game extends JFrame implements KeyListener {
     private final Hashtable<String, Integer> keyBinds = new Hashtable<String, Integer>();
     private static BufferedReader reader;
     private JFrame frame;
-    private ImageComponent background;
+    private GamePanel panel;
+    private BufferedImage background;
 
     static {
         try {
@@ -31,20 +32,20 @@ public class Game extends JFrame implements KeyListener {
     }
     private void initializeGUI() throws IOException {
         frame = new JFrame();
-        frame.setSize(1000, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.addKeyListener(this);
         frame.setResizable(false);
-        background = new ImageComponent("backgrounds/amongUsCharacters.png", 0, 0);
-        frame.add(background);
-        frame.add(new Hitbox(0, 0, 300, 300));
+        panel = new GamePanel(1000, 500);
+        frame.add(panel);
+        frame.pack();
+        panel.setBackground(ImageIO.read(new File("backgrounds/amongUsCharacters.png")));
+        panel.repaint();
         frame.setVisible(true);
-        frame.paintComponents(frame.getGraphics());
     }
 
-    private void addImage(BufferedImage image, int x, int y) {
-        ImageComponent component = new ImageComponent(image, x, y);
-        frame.add(component);
+    private void drawImage(BufferedImage image, int x, int y) {
+        Graphics2D g2D = (Graphics2D) panel.getGraphics();
+        g2D.drawImage(image, x, y, 300, 300, null);
     }
 
     @Override
