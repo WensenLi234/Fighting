@@ -30,6 +30,8 @@ public class Game extends JFrame {
         BufferedImage image = ImageIO.read(new File("backgrounds/img.png"));
         ImageElement yippie = new ImageElement(0, 0, image);
         panel.addImage(yippie);
+        yippie = new ImageElement(300, 300, image);
+        panel.addImage(yippie);
         panel.setBackground(ImageIO.read(new File("backgrounds/amongUsCharacters.png")));
         validate();
         repaint();
