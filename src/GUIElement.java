@@ -1,11 +1,7 @@
 public class GUIElement {
     private int x;
     private int y;
-    private int width;
-    private int height;
-    public GUIElement(int width, int height, int x, int y) {
-        this.width = width;
-        this.height = height;
+    public GUIElement(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -24,22 +20,6 @@ public class GUIElement {
 
     public void setY(int y) {
         this.y = y;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
     }
 
 }

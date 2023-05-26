@@ -27,14 +27,12 @@ public class Game extends JFrame {
         panel = new GamePanel(1000, 500);
         frame.add(panel);
         frame.pack();
+        BufferedImage image = ImageIO.read(new File("backgrounds/img.png"));
+        ImageElement yippie = new ImageElement(0, 0, image);
+        panel.addImage(yippie);
         panel.setBackground(ImageIO.read(new File("backgrounds/amongUsCharacters.png")));
-        panel.repaint();
+        validate();
+        repaint();
         frame.setVisible(true);
     }
-
-    private void drawImage(BufferedImage image, int x, int y) {
-        Graphics2D g2D = (Graphics2D) panel.getGraphics();
-        g2D.drawImage(image, x, y, 300, 300, null);
-    }
-
 }

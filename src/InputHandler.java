@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 
 public class InputHandler implements KeyListener {
@@ -25,6 +26,7 @@ public class InputHandler implements KeyListener {
 
     public Integer[] processInputs() {
         Integer[] recentInputs = inputs.toArray(new Integer[0]);
+        System.out.println(Arrays.toString(recentInputs));
         inputs.clear();
         return recentInputs;
     }
