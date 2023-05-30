@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Hashtable;
 
-public class Game extends JFrame {
+public class Game extends JFrame implements Runnable{
     private InputHandler inputHandler;
     private JFrame frame;
     private GamePanel panel;
@@ -16,6 +16,7 @@ public class Game extends JFrame {
 
     public Game() throws IOException {
         initializeGUI();
+        run();
     }
 
     private void initializeGUI() throws IOException {
@@ -27,14 +28,21 @@ public class Game extends JFrame {
         panel = new GamePanel(1000, 500);
         frame.add(panel);
         frame.pack();
-        BufferedImage image = ImageIO.read(new File("backgrounds/img.png"));
-        ImageElement yippie = new ImageElement(0, 0, image);
-        panel.addImage(yippie);
-        yippie = new ImageElement(300, 300, image);
-        panel.addImage(yippie);
         panel.setBackground(ImageIO.read(new File("backgrounds/amongUsCharacters.png")));
         validate();
         repaint();
         frame.setVisible(true);
+    }
+
+    @Override
+    public void run() {
+        while(true) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            inputHandler.processInputs();
+        }
     }
 }
