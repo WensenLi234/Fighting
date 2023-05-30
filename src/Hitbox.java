@@ -12,4 +12,13 @@ public class Hitbox extends GUIElement implements CollisionListener {
         super(rectangle.width, rectangle.height);
         this.rectangle = rectangle;
     }
+    public void paint(Graphics g) {
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.draw(rectangle);
+    }
+
+    @Override
+    public boolean touches(Rectangle rectangle1, Rectangle rectangle2) {
+        return false;
+    }
 }
