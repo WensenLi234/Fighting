@@ -27,7 +27,9 @@ public class InputHandler implements KeyListener {
     public Integer[] processInputs() {
         Integer[] recentInputs = inputs.toArray(new Integer[0]);
         System.out.println(Arrays.toString(recentInputs));
-        inputs.clear();
+        if(inputs.size() > 0) {
+            inputs.remove(0);
+        }
         return recentInputs;
     }
 
@@ -48,8 +50,11 @@ public class InputHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         Integer key = e.getKeyCode();
         for(String i: keyBinds.keySet()) {
-            if(keyHeld(key) < 0) {
-                keysHeld.add(key);
+            if(keyBinds.get(i).equals(key)) {
+                inputs.add(key);
+                if(keyHeld(key) < 0) {
+                    keysHeld.add(key);
+                }
             }
         }
     }
