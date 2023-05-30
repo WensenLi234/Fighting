@@ -14,12 +14,12 @@ public class Game extends JFrame implements Runnable{
     private GamePanel panel;
 
 
-    public Game() throws IOException {
+    public Game() throws IOException, InterruptedException {
         initializeGUI();
-        run();
+        //run();
     }
 
-    private void initializeGUI() throws IOException {
+    private void initializeGUI() throws IOException, InterruptedException {
         inputHandler = new InputHandler();
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,9 +28,17 @@ public class Game extends JFrame implements Runnable{
         panel = new GamePanel(1000, 500);
         frame.add(panel);
         frame.pack();
+        ImageElement img1 = new ImageElement(100, 100, ImageIO.read(new File("sprites/amongUsBLU.png")));
+        ImageElement img2 = new ImageElement(100, 100, ImageIO.read(new File("sprites/img.png")));
+        ImageElement[] baller = new ImageElement[2];
+        baller[0] = img1;
+        baller[1] = img2;
+        Entity entity = new Entity("lol", 30, img1);
+        Animation anims = new Animation(baller, 1, entity, this);
         panel.setBackground(ImageIO.read(new File("backgrounds/amongUsCharacters.png")));
         validate();
         repaint();
+        anims.play(panel.getGraphics());
         frame.setVisible(true);
     }
 

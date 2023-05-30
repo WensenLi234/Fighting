@@ -14,6 +14,7 @@ public class InputHandler implements KeyListener {
     private ArrayList<Integer> keysHeld;
     private BufferedReader keyBindReader;
 
+
     public InputHandler() throws IOException {
         keyBindReader = new BufferedReader(new FileReader("src/Save"));
         inputs = new ArrayList<>();
@@ -27,7 +28,7 @@ public class InputHandler implements KeyListener {
     public Integer[] processInputs() {
         Integer[] recentInputs = inputs.toArray(new Integer[0]);
         System.out.println(Arrays.toString(recentInputs));
-        if(inputs.size() > 0) {
+        if(inputs.size() > 0 && keysHeld.size() <= 0) {
             inputs.remove(0);
         }
         return recentInputs;
@@ -51,9 +52,9 @@ public class InputHandler implements KeyListener {
         Integer key = e.getKeyCode();
         for(String i: keyBinds.keySet()) {
             if(keyBinds.get(i).equals(key)) {
-                inputs.add(key);
                 if(keyHeld(key) < 0) {
                     keysHeld.add(key);
+                    inputs.add(key);
                 }
             }
         }

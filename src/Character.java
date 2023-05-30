@@ -3,12 +3,11 @@ import java.util.ArrayList;
 
 public class Character extends Entity{
     private ArrayList<Move> moveList;
-    private BufferedImage sprite;
     private boolean stunned;
-    public Character(String name, int health, ArrayList<Move> moveList, BufferedImage sprite) {
-        super(name, health);
+    public Character(String name, int health, ArrayList<Move> moveList, ImageElement sprite) {
+        super(name, health, sprite);
         this.moveList = moveList;
-        this.sprite = sprite;
         this.stunned = false;
     }
+
 }

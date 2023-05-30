@@ -31,7 +31,7 @@ public class GamePanel extends JPanel {
         Graphics2D g2D = (Graphics2D) g;
         g2D.drawImage(background, 0, 0, null);
         for(GUIElement element : elements) {
-            if(!(element instanceof Hitbox) || hitboxVisible == true) {
+            if(!(element instanceof Hitbox) || hitboxVisible) {
                 element.paint(g);
             }
         }
