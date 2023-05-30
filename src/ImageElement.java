@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class ImageElement extends GUIElement {
@@ -8,5 +9,9 @@ public class ImageElement extends GUIElement {
     }
     public BufferedImage getImage() {
         return image;
+    }
+    public void paint(Graphics g) {
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.drawImage(image, getX(), getY(), null);
     }
 }
