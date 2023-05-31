@@ -13,7 +13,6 @@ public class Game extends JFrame implements Runnable{
     private JFrame frame;
     private GamePanel panel;
 
-
     public Game() throws IOException, InterruptedException {
         initializeGUI();
         //run();
@@ -38,8 +37,8 @@ public class Game extends JFrame implements Runnable{
         panel.setBackground(ImageIO.read(new File("backgrounds/amongUsCharacters.png")));
         validate();
         repaint();
-        anims.play(panel.getGraphics());
         frame.setVisible(true);
+        anims.play(panel.getGraphics());
     }
 
     @Override
@@ -51,6 +50,8 @@ public class Game extends JFrame implements Runnable{
                 throw new RuntimeException(e);
             }
             inputHandler.processInputs();
+            panel.paint(panel.getGraphics());
+            repaint();
         }
     }
 }
