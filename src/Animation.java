@@ -15,7 +15,6 @@ public class Animation {
         for (ImageElement frame : frames) {
             entity.setSprite(frame);
             entity.getSprite().paint(g);
-            game.repaint();
             Thread.sleep((long) (interval * 1000));
         }
     }

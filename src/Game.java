@@ -51,7 +51,6 @@ public class Game extends JFrame implements Runnable{
             }
             inputHandler.processInputs();
             panel.paint(panel.getGraphics());
-            repaint();
         }
     }
 }
