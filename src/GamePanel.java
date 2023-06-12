@@ -9,9 +9,7 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel {
 
     private BufferedImage background;
-
     private ArrayList<GUIElement> elements;
-
     private boolean hitboxVisible;
     public GamePanel(int width, int height) {
         super();
@@ -36,7 +34,6 @@ public class GamePanel extends JPanel {
             }
         }
     }
-
     public void addElement(GUIElement element) {
         elements.add(element);
     }

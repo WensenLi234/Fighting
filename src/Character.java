@@ -2,12 +2,18 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Character extends Entity{
-    private ArrayList<Move> moveList;
-    private boolean stunned;
-    public Character(String name, int health, ArrayList<Move> moveList, ImageElement sprite) {
+    private Move idle;
+    private ArrayList<Move> specialMoveList;
+    private int stun;
+    public Character(String name, int health, ArrayList<Move> moves, ImageElement sprite) {
         super(name, health, sprite);
-        this.moveList = moveList;
-        this.stunned = false;
+        this.specialMoveList = moves;
+        this.stun = 0;
     }
-
+    public void setIdle(Move idle) {
+        this.idle = idle;
+    }
+    public void lessenStun() {
+        stun --;
+    }
 }

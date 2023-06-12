@@ -1,15 +1,21 @@
 import java.awt.*;
 
-public class Move extends Animation{
-    Hitbox[] hitbox;
-    public Move(Entity entity, ImageElement[] frames, Hitbox[] hitbox, double interval, Game game) {
-        super(frames, interval, entity, game);
-        this.hitbox = hitbox;
+public class Move {
+    private Hitbox[] hitboxes;
+    private Animation animation;
+    public Move(Hitbox[] hitboxes, Animation animation) {
+        this.animation = animation;
+        this.hitboxes = hitboxes;
     }
-    @Override
-    public void play(Graphics g) {
-        for(int i = 0; i < frames.length; i++) {
-
+    public ImageElement nextFrame(int x, int y) {
+        for(int i = 0; i < hitboxes.length - 1; i++) {
+            if(hitboxes[i] != null && Hitbox.getActiveHitboxes().contains(hitboxes[i])) {
+                hitboxes[i].setX(x);
+                hitboxes[i].setY(y);
+                Hitbox.removeHitbox(hitboxes[i]);
+                Hitbox.addHitbox(hitboxes[i + 1]);
+            }
         }
+        return animation.nextFrame();
     }
 }

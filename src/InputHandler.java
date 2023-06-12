@@ -27,20 +27,22 @@ public class InputHandler implements KeyListener {
 
     public Integer[] processInputs() {
         Integer[] recentInputs = inputs.toArray(new Integer[0]);
-        System.out.println(Arrays.toString(recentInputs));
         if(inputs.size() > 0 && keysHeld.size() <= 0) {
             inputs.remove(0);
         }
         return recentInputs;
     }
-
-    public int keyHeld(Integer key) {
+    public boolean inputHeld(int key) {
         for(int i = 0; i < keysHeld.size(); i++) {
-            if(keysHeld.get(i) == key.intValue()) {
-                return i;
+            if(keysHeld.get(i) == key) {
+                return true;
             }
         }
-        return -1;
+        return false;
+    }
+    public boolean inputHeld(String input) {
+        int key = keyBinds.get(input);
+        return inputHeld(key);
     }
     @Override
     public void keyTyped(KeyEvent e) {
@@ -52,7 +54,7 @@ public class InputHandler implements KeyListener {
         Integer key = e.getKeyCode();
         for(String i: keyBinds.keySet()) {
             if(keyBinds.get(i).equals(key)) {
-                if(keyHeld(key) < 0) {
+                if(!inputHeld(key)) {
                     keysHeld.add(key);
                     inputs.add(key);
                 }
@@ -63,9 +65,6 @@ public class InputHandler implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         Integer key = e.getKeyCode();
-        int heldIndex = keyHeld(key);
-        if(heldIndex >= 0) {
-            keysHeld.remove(heldIndex);
-        }
+        keysHeld.remove(key);
     }
 }
